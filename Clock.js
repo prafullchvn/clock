@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const { Line } = require('./Line.js');
+const { Line } = require('./Shape/Line.js');
 
 class Clock {
   constructor() {
@@ -52,9 +52,9 @@ setInterval(() => {
   clock.rotateClock();
   const clockHtml = clock.toHTML();
 
-  const templatePath = 'templates/refreshingTemplate.html';
+  const templatePath = 'template.html';
   const template = fs.readFileSync(templatePath, 'utf8');
   const body = template.replace('__BODY__', clockHtml);
 
-  fs.writeFileSync('htmlPages/clock.html', body, 'utf8');
+  fs.writeFileSync('index.html', body, 'utf8');
 }, 1000);
